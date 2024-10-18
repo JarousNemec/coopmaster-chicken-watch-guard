@@ -1,5 +1,5 @@
 services:
-  coop_camera_driver:
+  coop_chicken_watch_guard:
     build:
       context: .
     restart: always
