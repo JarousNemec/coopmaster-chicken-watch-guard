@@ -1,0 +1,7 @@
+services:
+  coop_camera_driver:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "9003:9003"
