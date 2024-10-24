@@ -1,11 +1,9 @@
 import json
 import logging
-import os
 import random
 from datetime import datetime
 
 import cv2
-import numpy as np
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -26,28 +24,14 @@ def publish_current_image(cfg, mqtt_client, topic):
 
     success = True
     while success:
-
-        # reading from frame
         success, frame = cam.read()
 
-        # # if video is still left continue creating images
-        # name = './data/frame' + str(currentframe) + '.png'
-        # print('Creating...' + name)
-        #
-        # # writing the extracted images
-        # cv2.imwrite(name, frame)
-        #
-        # # increasing counter so that it will
-        # # show how many frames are created
         if currentframe%30 == 0 and frame is not None:
-            # mqtt_helper.publish(mqtt_client, topic, frame.dumps())
             _, frame_buff = cv2.imencode('.png', frame)
             mqtt_client.publish(topic, frame_buff.tobytes())
             logging.info("publish_current_image - sending")
         currentframe += 1
 
-
-    # Release all space and windows once done
     cam.release()
 
 
