@@ -1,8 +1,6 @@
 import json
 import logging
 
-import torch
-import ultralytics
 from ultralytics import YOLO
 import requests
 
@@ -62,7 +60,10 @@ def count_chicken():
 
 def get_image():
 
-    url = 'http://127.0.0.1:9001/api/cam1/image'
+    host = configuration.config.CHICKEN_CAMERA_HOST
+    port = configuration.config.CHICKEN_CAMERA_PORT
+
+    url = f'http://{host}:{port}/api/chicken/image'
 
     try:
         response = requests.get(url)

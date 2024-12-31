@@ -5,17 +5,7 @@ from flask.cli import load_dotenv
 
 from app.mqqt_client import NestMQTTClient
 
-host = "127.0.0.1"
-port = 9003
-hello_message = "Hello from chicken watch guard"
-
 log_file_name = "chicken_watch_guard.log"
-
-modul_topic = "/chicken_watch_guard"
-wildcard_modul_topic = "/chicken_watch_guard/#"
-count_topic = "/count"
-image_topic = "/image"
-
 
 load_dotenv()
 
@@ -30,18 +20,12 @@ class AppConfigError(Exception):
 class AppConfig:
     PORT: int = 10000
     HOST: str = "127.0.0.1"
-    INSTALLATION_DIRECTORY: str = "/bizstorecard"
-
-    DB_HOST: str = "coop-solution-db"
-    DB_PORT: int = 5432
-
-    POSTGRES_USER: str = "coop_admin"
-    POSTGRES_PASSWORD: str = "your_secure_password1"
-    POSTGRES_DB: str = "coopmaster"
+    CHICKEN_CAMERA_PORT: int = 9001
+    CHICKEN_CAMERA_HOST: int = "localhost"
 
     MQTT_BROKER: str = "192.168.1.177"
     MQTT_PORT: int = 1883
-    MQTT_TOPIC: str = "bird/count"
+    MQTT_TOPIC: str = "chicken/count"
     REPORT_INTERVAL: int = 5
 
     """
@@ -93,8 +77,10 @@ def get_mqtt_client():
         config.MQTT_TOPIC
     )
 
+
 def get_log_directory():
     return "./logs/"
+
 
 def get_log_filename():
     return log_file_name

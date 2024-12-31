@@ -1,6 +1,6 @@
 from flask import Blueprint, make_response
 
-from app.cron.dog_repoter import check_dog
+from app.cron.chicken_repoter import check_dog
 
 admin_blueprint = Blueprint('admin_blueprint', __name__)
 
