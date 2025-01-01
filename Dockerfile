@@ -1,6 +1,6 @@
 FROM  ultralytics/ultralytics:8.3.3-python
 
-RUN mkdir build
+RUN mkdir /build
 
 WORKDIR /build
 
