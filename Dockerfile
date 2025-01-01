@@ -8,7 +8,6 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-EXPOSE 9003:9003
-
+EXPOSE 9003
 
 CMD [ "python", "/build/main.py"]
