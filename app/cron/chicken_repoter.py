@@ -1,7 +1,7 @@
 import json
 import logging
 
-from ultralytics import YOLO
+
 import requests
 
 from app import configuration
@@ -39,8 +39,7 @@ def report_bird_count(mqtt_client, bird_count):
 def count_chicken():
     temp_img_path = get_image()
 
-    model = YOLO("yolo11x")  # Your model should be here after training
-    results = model(temp_img_path)  # image you weant to predict on
+    results = configuration.model(temp_img_path)  # image you weant to predict on
 
     bird_count = 0
 

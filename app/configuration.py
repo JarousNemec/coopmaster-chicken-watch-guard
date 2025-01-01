@@ -2,6 +2,7 @@ import os
 from typing import get_type_hints, Union
 
 from flask.cli import load_dotenv
+from ultralytics import YOLO
 
 from app.mqqt_client import NestMQTTClient
 
@@ -27,6 +28,8 @@ class AppConfig:
     MQTT_PORT: int = 1883
     MQTT_TOPIC: str = "chicken/count"
     REPORT_INTERVAL: int = 5
+    MQTT_USERNAME: str = "admin"
+    MQTT_PASSWORD: str = "password"
 
     """
     Map environment variables to class fields according to these rules:
@@ -68,13 +71,16 @@ class AppConfig:
 
 
 config = AppConfig(os.environ)
+model = YOLO("yolo11x")
 
 
 def get_mqtt_client():
     return NestMQTTClient(
         config.MQTT_BROKER,
         config.MQTT_PORT,
-        config.MQTT_TOPIC
+        config.MQTT_TOPIC,
+        config.MQTT_USERNAME,
+        config.MQTT_PASSWORD
     )
 
 
