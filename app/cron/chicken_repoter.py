@@ -6,7 +6,7 @@ from app import configuration
 from app.configuration import model
 
 
-def check_dog():
+def check_chicken():
     bird_count, actual_image = count_chicken()
     mqtt_client = configuration.get_mqtt_client()
 
@@ -16,7 +16,7 @@ def check_dog():
         report_actual_image(mqtt_client, actual_image)
     except:
         logging.error(
-            f"Could not connect to MQTT broker. No data will be published. Check connection to MQTT server. {configuration.config.MQTT_BROKER}:{configuration.config.MQTT_PORT} {configuration.config.MQTT_TOPIC} ")
+            f"Could not connect to MQTT broker. No data will be published. Check connection to MQTT server.")
     finally:
         mqtt_client.close()
 

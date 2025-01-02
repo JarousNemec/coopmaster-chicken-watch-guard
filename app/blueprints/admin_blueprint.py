@@ -1,6 +1,6 @@
 from flask import Blueprint, make_response
 
-from app.cron.chicken_repoter import check_dog
+from app.cron.chicken_repoter import check_chicken
 
 admin_blueprint = Blueprint('admin_blueprint', __name__)
 
@@ -8,7 +8,7 @@ admin_blueprint = Blueprint('admin_blueprint', __name__)
 @admin_blueprint.route("/api/predict", methods=['GET'])
 def predict():
     response = {"state": "recreated"}
-    check_dog()
+    check_chicken()
     return make_response(response)
 
 

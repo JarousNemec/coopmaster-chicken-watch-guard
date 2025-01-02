@@ -6,7 +6,7 @@ from waitress import serve
 
 from app import configuration
 from app.blueprints.admin_blueprint import admin_blueprint
-from app.cron.chicken_repoter import check_dog
+from app.cron.chicken_repoter import check_chicken
 
 
 def flask_app():
@@ -29,8 +29,9 @@ def server():
     host = configuration.config.HOST
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(check_dog, 'interval', seconds=configuration.config.REPORT_INTERVAL)
+    scheduler.add_job(check_chicken, 'interval', seconds=configuration.config.REPORT_INTERVAL)
     scheduler.start()
 
-    logging.info(f"Serving on http://{host}:{port}")
+    logging.info(f"Serving on http://{host}:{port}/api/ping")
+    logging.info(f"Serving on http://{host}:{port}/api/predict")
     serve(manager_app, port=port)
