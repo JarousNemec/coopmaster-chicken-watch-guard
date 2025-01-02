@@ -1,5 +1,6 @@
 import os
 from typing import get_type_hints, Union
+from ultralytics import YOLO
 
 from flask.cli import load_dotenv
 
@@ -25,7 +26,10 @@ class AppConfig:
 
     MQTT_BROKER: str = "192.168.1.177"
     MQTT_PORT: int = 1883
-    MQTT_TOPIC: str = "chicken/count"
+    MQTT_CHICKEN_COUNT_TOPIC: str = "coopmaster/chicken/count"
+    MQTT_CHICKEN_ACTUAL_IMAGE: str = "coopmaster/chicken/image"
+    MQTT_USERNAME: str = "admin"
+    MQTT_PASSWORD: str = "password"
     REPORT_INTERVAL: int = 5
 
     """
@@ -68,13 +72,15 @@ class AppConfig:
 
 
 config = AppConfig(os.environ)
+model = YOLO("yolo11x")  # Your model should be here after training
 
 
 def get_mqtt_client():
     return NestMQTTClient(
         config.MQTT_BROKER,
         config.MQTT_PORT,
-        config.MQTT_TOPIC
+        config.MQTT_USERNAME,
+        config.MQTT_PASSWORD
     )
 
 

@@ -14,7 +14,7 @@ def flask_app():
 
     @app.route("/")
     def hello_world():
-        message = "Hello World from chicken repoter!"
+        message = "Chicken Watch Guard"
         logging.info(message)
         return message
 
