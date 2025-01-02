@@ -38,7 +38,7 @@ def report_actual_image(mqtt_client, actual_image):
 
 
 def report_chicken_count(mqtt_client, bird_count):
-    message = {"bird": bird_count}
+    message = {"count": bird_count}
     payload = json.dumps(message)
 
     result = mqtt_client.publish(configuration.config.MQTT_CHICKEN_COUNT_TOPIC, payload.encode())
