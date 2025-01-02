@@ -27,7 +27,7 @@ class AppConfig:
     MQTT_BROKER: str = "192.168.1.177"
     MQTT_PORT: int = 1883
     MQTT_CHICKEN_COUNT_TOPIC: str = "coopmaster/chicken/count"
-    MQTT_CHICKEN_ACTUAL_IMAGE: str = "coopmaster/chicken/image"
+    MQTT_CHICKEN_ACTUAL_IMAGE: str = "coopmaster/chicken/image/actual"
     MQTT_USERNAME: str = "admin"
     MQTT_PASSWORD: str = "password"
     REPORT_INTERVAL: int = 5
