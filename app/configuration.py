@@ -21,8 +21,8 @@ class AppConfigError(Exception):
 class AppConfig:
     PORT: int = 10000
     HOST: str = "127.0.0.1"
-    CHICKEN_CAMERA_PORT: int = 9001
-    CHICKEN_CAMERA_HOST: str = "localhost"
+    CAMERA_DRIVER_PORT: int = 9001
+    CAMERA_DRIVER_HOST: str = "localhost"
 
     MQTT_BROKER: str = "192.168.1.177"
     MQTT_PORT: int = 1883

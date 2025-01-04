@@ -74,8 +74,8 @@ def count_chicken():
 
 
 def get_image():
-    host = configuration.config.CHICKEN_CAMERA_HOST
-    port = configuration.config.CHICKEN_CAMERA_PORT
+    host = configuration.config.CAMERA_DRIVER_HOST
+    port = configuration.config.CAMERA_DRIVER_PORT
 
     url = f'http://{host}:{port}/api/chicken/image'
 
