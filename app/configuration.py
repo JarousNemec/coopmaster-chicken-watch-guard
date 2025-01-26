@@ -30,7 +30,7 @@ class AppConfig:
     MQTT_CHICKEN_ACTUAL_IMAGE: str = "coopmaster/chicken/image/actual"
     MQTT_USERNAME: str = "admin"
     MQTT_PASSWORD: str = "password"
-    REPORT_INTERVAL: int = 5
+    REPORT_INTERVAL: int = 60
 
     """
     Map environment variables to class fields according to these rules:

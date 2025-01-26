@@ -29,7 +29,7 @@ def server():
     host = configuration.config.HOST
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(check_chicken, 'interval', seconds=configuration.config.REPORT_INTERVAL)
+    scheduler.add_job(check_chicken, 'interval', seconds=configuration.config.REPORT_INTERVAL, max_instances=1)
     scheduler.start()
 
     logging.info(f"Serving on http://{host}:{port}/api/ping")
